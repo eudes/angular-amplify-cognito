@@ -1,0 +1,9 @@
+<button *ngIf="!isLoggedIn" (click)="login()">Login</button>
+<button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+
+<button (click)="changeValue()">valor</button>
+
+{{isLoggedIn}}
+<div>
+    {{asdf}} {{counter}}
+</div>
