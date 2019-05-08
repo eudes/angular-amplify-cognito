@@ -8,17 +8,12 @@ import {AuthClass} from 'aws-amplify';
     styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-    isLoggedIn = false;
-    user: any = null;
-    asdf = 'texto';
-    counter = 0;
-    rand = 0;
+    loggedIn = false;
 
     constructor(
         private amplifyService: AmplifyService,
         private ref: ChangeDetectorRef,
     ) {
-        this.rand = Math.random();
     }
 
     ngOnInit() {
@@ -26,31 +21,20 @@ export class LoginComponent implements OnInit {
     }
 
     update(state) {
-        console.log(this);
-        this.user = state.user;
-        this.isLoggedIn = state.user !== null;
         console.log('State', state);
-        console.log('isLoggedIn', this.isLoggedIn, new Date().toISOString());
-        this.asdf = 'logged iN';
-        this.counter += 1;
-        // this.ref.detectChanges();
+        this.loggedIn = !!state.user;
+        // Force change detection
+        this.ref.detectChanges();
     }
 
     login() {
         console.log('Login');
         const auth: AuthClass = this.amplifyService.auth();
-        auth.federatedSignIn()
-            .then(creds => {
-                console.log(creds);
-            });
+        auth.federatedSignIn();
     }
 
     logout() {
         const auth: AuthClass = this.amplifyService.auth();
         auth.signOut();
-    }
-
-    changeValue() {
-        this.isLoggedIn = !this.isLoggedIn;
     }
 }
