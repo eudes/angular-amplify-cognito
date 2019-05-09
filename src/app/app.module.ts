@@ -6,6 +6,9 @@ import {AppComponent} from './app.component';
 
 import {AmplifyAngularModule, AmplifyService} from 'aws-amplify-angular';
 import { LoginComponent } from './login/login.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
     declarations: [
@@ -16,6 +19,8 @@ import { LoginComponent } from './login/login.component';
         BrowserModule,
         AppRoutingModule,
         AmplifyAngularModule,
+        FormsModule,
+        CodemirrorModule,
 
     ],
     providers: [

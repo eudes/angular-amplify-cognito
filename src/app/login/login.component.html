@@ -1,2 +1,37 @@
 <button *ngIf="!loggedIn" (click)="login()">Login</button>
 <button *ngIf="loggedIn" (click)="logout()">Logout</button>
+
+<div>
+    <button (click)="callRest()">Call REST</button>
+</div>
+
+<div *ngIf="loggedIn">
+    <h4>Access Token</h4>
+    <p>Issued: {{accessTokenIat}}</p>
+    <p>Expiry: {{accessTokenExp}}</p>
+    <ngx-codemirror
+            [(ngModel)]="accessToken"
+            [options]="{
+                mode: 'javascript',
+                readOnly: true
+              }"
+    ></ngx-codemirror>
+    <h4>ID Token</h4>
+    <p>Issued: {{idTokenIat}}</p>
+    <p>Expiry: {{idTokenExp}}</p>
+    <ngx-codemirror
+            [(ngModel)]="idToken"
+            [options]="{
+                mode: 'javascript',
+                readOnly: true
+              }"
+    ></ngx-codemirror>
+    <h4>Refresh Token</h4>
+    <ngx-codemirror
+            [(ngModel)]="refreshToken"
+            [options]="{
+                mode: 'javascript',
+                readOnly: true
+              }"
+    ></ngx-codemirror>
+</div>

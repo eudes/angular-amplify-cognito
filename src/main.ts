@@ -6,6 +6,8 @@ import {environment} from './environments/environment';
 
 import Amplify from 'aws-amplify';
 
+import 'codemirror/mode/javascript/javascript';
+
 if (environment.production) {
     enableProdMode();
 }
@@ -69,15 +71,15 @@ Amplify.configure({
         // // OPTIONAL - Configuration for cookie storage
         // // Note: if the secure flag is set to true, then the cookie transmission requires a secure protocol
         cookieStorage: {
-          // REQUIRED - Cookie domain (only required if cookieStorage is provided)
-          domain: 'localhost',
-          // OPTIONAL - Cookie path
-          path: '/',
-          // OPTIONAL - Cookie expiration in days
-          expires: 365,
-          // OPTIONAL - Cookie secure flag
-          // Either true or false, indicating if the cookie transmission requires a secure protocol (https).
-          secure: false
+            // REQUIRED - Cookie domain (only required if cookieStorage is provided)
+            domain: 'localhost',
+            // OPTIONAL - Cookie path
+            path: '/',
+            // OPTIONAL - Cookie expiration in days
+            expires: 365,
+            // OPTIONAL - Cookie secure flag
+            // Either true or false, indicating if the cookie transmission requires a secure protocol (https).
+            secure: false
         },
 
         // OPTIONAL - customized storage object
@@ -85,6 +87,14 @@ Amplify.configure({
 
         // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
         // authenticationFlowType: 'USER_PASSWORD_AUTH'
+    },
+    API: {
+        endpoints: [
+            {
+                name: 'test',
+                endpoint: 'https://k852o7wv2f.execute-api.eu-west-1.amazonaws.com'
+            },
+        ]
     }
 });
 
